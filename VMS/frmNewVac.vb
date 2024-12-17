@@ -121,7 +121,7 @@ Public Class frmNewVac
         Return True
     End Function
 
-    Private Sub Clear()
+    Sub Clear()
         'txtPID.Clear()
         txtVaccineName.Clear()
         txtAgeYear.Clear()

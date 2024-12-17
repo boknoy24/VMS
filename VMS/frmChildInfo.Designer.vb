@@ -25,6 +25,10 @@ Partial Class frmChildInfo
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.btnClose = New System.Windows.Forms.Button()
+        Me.btnAddnew = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.pid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lastname = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.firstname = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -35,10 +39,8 @@ Partial Class frmChildInfo
         Me.mothername = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fathername = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.address = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnClose = New System.Windows.Forms.Button()
-        Me.btnAddnew = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnEdit = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.btnDelete = New System.Windows.Forms.DataGridViewImageColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -46,6 +48,7 @@ Partial Class frmChildInfo
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeColumns = False
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -65,7 +68,7 @@ Partial Class frmChildInfo
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeight = 30
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pid, Me.lastname, Me.firstname, Me.middleinitial, Me.suffix, Me.gender, Me.dateofbirth, Me.mothername, Me.fathername, Me.address})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pid, Me.lastname, Me.firstname, Me.middleinitial, Me.suffix, Me.gender, Me.dateofbirth, Me.mothername, Me.fathername, Me.address, Me.btnEdit, Me.btnDelete})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -78,87 +81,11 @@ Partial Class frmChildInfo
         Me.DataGridView1.Location = New System.Drawing.Point(9, 45)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(913, 465)
         Me.DataGridView1.TabIndex = 0
-        '
-        'pid
-        '
-        Me.pid.DataPropertyName = "pid"
-        Me.pid.HeaderText = "ID"
-        Me.pid.Name = "pid"
-        Me.pid.Visible = False
-        '
-        'lastname
-        '
-        Me.lastname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.lastname.DataPropertyName = "lastname"
-        Me.lastname.HeaderText = "LAST NAME"
-        Me.lastname.Name = "lastname"
-        Me.lastname.Width = 89
-        '
-        'firstname
-        '
-        Me.firstname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.firstname.DataPropertyName = "firstname"
-        Me.firstname.HeaderText = "FIRST NAME"
-        Me.firstname.Name = "firstname"
-        Me.firstname.Width = 94
-        '
-        'middleinitial
-        '
-        Me.middleinitial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.middleinitial.DataPropertyName = "middleinitial"
-        Me.middleinitial.HeaderText = "MI"
-        Me.middleinitial.Name = "middleinitial"
-        Me.middleinitial.Width = 45
-        '
-        'suffix
-        '
-        Me.suffix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.suffix.DataPropertyName = "suffix"
-        Me.suffix.HeaderText = "SUFFIX"
-        Me.suffix.Name = "suffix"
-        Me.suffix.Width = 67
-        '
-        'gender
-        '
-        Me.gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.gender.DataPropertyName = "gender"
-        Me.gender.HeaderText = "SEX"
-        Me.gender.Name = "gender"
-        Me.gender.Width = 49
-        '
-        'dateofbirth
-        '
-        Me.dateofbirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.dateofbirth.DataPropertyName = "dateofbirth"
-        Me.dateofbirth.HeaderText = "DATE OF BIRTH"
-        Me.dateofbirth.Name = "dateofbirth"
-        Me.dateofbirth.Width = 109
-        '
-        'mothername
-        '
-        Me.mothername.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.mothername.DataPropertyName = "mothername"
-        Me.mothername.HeaderText = "MOTHER'S NAME"
-        Me.mothername.Name = "mothername"
-        Me.mothername.Width = 121
-        '
-        'fathername
-        '
-        Me.fathername.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.fathername.DataPropertyName = "fathername"
-        Me.fathername.HeaderText = "FATHER'S NAME"
-        Me.fathername.Name = "fathername"
-        Me.fathername.Width = 112
-        '
-        'address
-        '
-        Me.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.address.DataPropertyName = "address"
-        Me.address.HeaderText = "ADDRESS"
-        Me.address.Name = "address"
         '
         'btnClose
         '
@@ -224,6 +151,106 @@ Partial Class frmChildInfo
         Me.Panel1.Size = New System.Drawing.Size(934, 46)
         Me.Panel1.TabIndex = 6
         '
+        'pid
+        '
+        Me.pid.DataPropertyName = "pid"
+        Me.pid.HeaderText = "ID"
+        Me.pid.Name = "pid"
+        Me.pid.ReadOnly = True
+        Me.pid.Visible = False
+        '
+        'lastname
+        '
+        Me.lastname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.lastname.DataPropertyName = "lastname"
+        Me.lastname.HeaderText = "LAST NAME"
+        Me.lastname.Name = "lastname"
+        Me.lastname.ReadOnly = True
+        Me.lastname.Width = 89
+        '
+        'firstname
+        '
+        Me.firstname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.firstname.DataPropertyName = "firstname"
+        Me.firstname.HeaderText = "FIRST NAME"
+        Me.firstname.Name = "firstname"
+        Me.firstname.ReadOnly = True
+        Me.firstname.Width = 94
+        '
+        'middleinitial
+        '
+        Me.middleinitial.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.middleinitial.DataPropertyName = "middleinitial"
+        Me.middleinitial.HeaderText = "MI"
+        Me.middleinitial.Name = "middleinitial"
+        Me.middleinitial.ReadOnly = True
+        Me.middleinitial.Width = 45
+        '
+        'suffix
+        '
+        Me.suffix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.suffix.DataPropertyName = "suffix"
+        Me.suffix.HeaderText = "SUFFIX"
+        Me.suffix.Name = "suffix"
+        Me.suffix.ReadOnly = True
+        Me.suffix.Width = 67
+        '
+        'gender
+        '
+        Me.gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.gender.DataPropertyName = "gender"
+        Me.gender.HeaderText = "SEX"
+        Me.gender.Name = "gender"
+        Me.gender.ReadOnly = True
+        Me.gender.Width = 49
+        '
+        'dateofbirth
+        '
+        Me.dateofbirth.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.dateofbirth.DataPropertyName = "dateofbirth"
+        Me.dateofbirth.HeaderText = "DATE OF BIRTH"
+        Me.dateofbirth.Name = "dateofbirth"
+        Me.dateofbirth.ReadOnly = True
+        Me.dateofbirth.Width = 109
+        '
+        'mothername
+        '
+        Me.mothername.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.mothername.DataPropertyName = "mothername"
+        Me.mothername.HeaderText = "MOTHER'S NAME"
+        Me.mothername.Name = "mothername"
+        Me.mothername.ReadOnly = True
+        Me.mothername.Width = 121
+        '
+        'fathername
+        '
+        Me.fathername.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.fathername.DataPropertyName = "fathername"
+        Me.fathername.HeaderText = "FATHER'S NAME"
+        Me.fathername.Name = "fathername"
+        Me.fathername.ReadOnly = True
+        Me.fathername.Width = 112
+        '
+        'address
+        '
+        Me.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.address.DataPropertyName = "address"
+        Me.address.HeaderText = "ADDRESS"
+        Me.address.Name = "address"
+        Me.address.ReadOnly = True
+        '
+        'btnEdit
+        '
+        Me.btnEdit.HeaderText = ""
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.ReadOnly = True
+        '
+        'btnDelete
+        '
+        Me.btnDelete.HeaderText = ""
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.ReadOnly = True
+        '
         'frmChildInfo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -233,7 +260,7 @@ Partial Class frmChildInfo
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "frmChildInfo"
         Me.Text = " "
@@ -260,4 +287,6 @@ Partial Class frmChildInfo
     Friend WithEvents mothername As DataGridViewTextBoxColumn
     Friend WithEvents fathername As DataGridViewTextBoxColumn
     Friend WithEvents address As DataGridViewTextBoxColumn
+    Friend WithEvents btnEdit As DataGridViewImageColumn
+    Friend WithEvents btnDelete As DataGridViewImageColumn
 End Class

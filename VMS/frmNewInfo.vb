@@ -1,4 +1,6 @@
-﻿Imports MySql.Data.MySqlClient
+﻿
+Imports MySql.Data.MySqlClient
+Imports Org.BouncyCastle.Asn1.X509
 
 Public Class frmNewInfo
     Private connectionString As String = "Server=localhost;Database=vms;Uid=root;Pwd=;"
@@ -93,4 +95,103 @@ Public Class frmNewInfo
             MessageBox.Show("An error occurred while saving the data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        If Not ValidateInput() Then Return
+        Try
+            If MsgBox("Update record?", vbYesNo + vbQuestion) = vbYes Then
+                Using connection As New MySqlConnection(connectionString)
+                    connection.Open()
+                    Dim query As String = "UPDATE information SET " &
+                      "lastname = @lastname, " &
+                      "firstname = @firstname, " &
+                      "middleinitial = @middleinitial, " &
+                      "suffix = @suffix, " &
+                      "gender = @gender, " &
+                      "dateofbirth = @dateofbirth, " &
+                      "mothername = @mothername, " &
+                      "fathername = @fathername, " &
+                      "address = @address " &
+                      "WHERE pid = @pid"
+
+                    Using command As New MySqlCommand(query, connection)
+                        command.Parameters.AddWithValue("@pid", If(String.IsNullOrEmpty(txtPID.Text), DBNull.Value, CInt(txtPID.Text)))
+                        command.Parameters.AddWithValue("@lastname", txtLname.Text.Trim())
+                        command.Parameters.AddWithValue("@firstname", txtFname.Text.Trim())
+                        command.Parameters.AddWithValue("@middleinitial", txtMI.Text.Trim())
+                        command.Parameters.AddWithValue("@suffix", txtSuffix.Text.Trim())
+                        command.Parameters.AddWithValue("@gender", cmbSex.Text.Trim())
+                        command.Parameters.AddWithValue("@dateofbirth", dtpBirthDate.Value.ToString("yyyy-MM-dd"))
+                        command.Parameters.AddWithValue("@mothername", txtMother.Text.Trim())
+                        command.Parameters.AddWithValue("@fathername", txtFather.Text.Trim())
+                        command.Parameters.AddWithValue("@address", txtAddress.Text.Trim())
+                        command.ExecuteNonQuery()
+                    End Using
+
+                    MessageBox.Show("Vaccine information updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    frmNewVac.Clear()
+                    frmChildInfo.RefreshDataGrid()
+                    Me.Close()
+
+                End Using
+            End If
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while updating the data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Function ValidateInput() As Boolean
+        If String.IsNullOrWhiteSpace(txtPID.Text) OrElse Not IsNumeric(txtPID.Text) Then
+            MessageBox.Show("Please enter a valid PID.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtPID.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtLname.Text) Then
+            MessageBox.Show("Please enter the Last Name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtLname.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtFname.Text) Then
+            MessageBox.Show("Please enter the First Name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtFname.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtMI.Text) Then
+            MessageBox.Show("Please enter the Middle Initial.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtMI.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtSuffix.Text) Then
+            MessageBox.Show("Please enter the Suffix.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtSuffix.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(cmbSex.Text) Then
+            MessageBox.Show("Please select a Gender.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            cmbSex.Focus()
+            Return False
+        End If
+        If dtpBirthDate.Value = Nothing Then
+            MessageBox.Show("Please select a Date of Birth.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            dtpBirthDate.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtMother.Text) Then
+            MessageBox.Show("Please enter the Mother's Name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtMother.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtFather.Text) Then
+            MessageBox.Show("Please enter the Father's Name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtFather.Focus()
+            Return False
+        End If
+        If String.IsNullOrWhiteSpace(txtAddress.Text) Then
+            MessageBox.Show("Please enter the Address.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            txtAddress.Focus()
+            Return False
+        End If
+        Return True
+    End Function
+
 End Class

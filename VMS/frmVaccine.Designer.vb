@@ -25,10 +25,6 @@ Partial Class frmVaccine
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnClose = New System.Windows.Forms.Button()
         Me.pid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.age_years = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.age_months = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -39,6 +35,10 @@ Partial Class frmVaccine
         Me.doses = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnEdit = New System.Windows.Forms.DataGridViewImageColumn()
         Me.btnDelete = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnClose = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -46,6 +46,7 @@ Partial Class frmVaccine
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeColumns = False
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -78,10 +79,95 @@ Partial Class frmVaccine
         Me.DataGridView1.Location = New System.Drawing.Point(17, 51)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(913, 465)
         Me.DataGridView1.TabIndex = 1
+        '
+        'pid
+        '
+        Me.pid.DataPropertyName = "pid"
+        Me.pid.HeaderText = "ID"
+        Me.pid.Name = "pid"
+        Me.pid.ReadOnly = True
+        Me.pid.Visible = False
+        '
+        'age_years
+        '
+        Me.age_years.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.age_years.DataPropertyName = "age_years"
+        Me.age_years.HeaderText = "AGE (YEAR/S)"
+        Me.age_years.Name = "age_years"
+        Me.age_years.ReadOnly = True
+        Me.age_years.Width = 99
+        '
+        'age_months
+        '
+        Me.age_months.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.age_months.DataPropertyName = "age_months"
+        Me.age_months.HeaderText = "AGE (MONTH/S)"
+        Me.age_months.Name = "age_months"
+        Me.age_months.ReadOnly = True
+        Me.age_months.Width = 115
+        '
+        'column_height
+        '
+        Me.column_height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.column_height.DataPropertyName = "column_height"
+        Me.column_height.HeaderText = "HEIGHT RANGE"
+        Me.column_height.Name = "column_height"
+        Me.column_height.ReadOnly = True
+        Me.column_height.Width = 109
+        '
+        'weight
+        '
+        Me.weight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.weight.DataPropertyName = "weight"
+        Me.weight.HeaderText = "WEIGHT RANGE"
+        Me.weight.Name = "weight"
+        Me.weight.ReadOnly = True
+        Me.weight.Width = 113
+        '
+        'vaccine_name
+        '
+        Me.vaccine_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.vaccine_name.DataPropertyName = "vaccine_name"
+        Me.vaccine_name.HeaderText = "VACCINE NAME"
+        Me.vaccine_name.Name = "vaccine_name"
+        Me.vaccine_name.ReadOnly = True
+        '
+        'dosage_per_vaccine
+        '
+        Me.dosage_per_vaccine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.dosage_per_vaccine.DataPropertyName = "dosage_per_vaccine"
+        Me.dosage_per_vaccine.HeaderText = "DOSAGE PER VACCINE"
+        Me.dosage_per_vaccine.Name = "dosage_per_vaccine"
+        Me.dosage_per_vaccine.ReadOnly = True
+        Me.dosage_per_vaccine.Width = 145
+        '
+        'doses
+        '
+        Me.doses.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.doses.DataPropertyName = "doses"
+        Me.doses.HeaderText = "DOSES"
+        Me.doses.Name = "doses"
+        Me.doses.ReadOnly = True
+        Me.doses.Width = 65
+        '
+        'btnEdit
+        '
+        Me.btnEdit.HeaderText = ""
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.ReadOnly = True
+        Me.btnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.btnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'btnDelete
+        '
+        Me.btnDelete.HeaderText = ""
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.ReadOnly = True
         '
         'Panel1
         '
@@ -146,80 +232,6 @@ Partial Class frmVaccine
         Me.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnClose.UseVisualStyleBackColor = False
-        '
-        'pid
-        '
-        Me.pid.DataPropertyName = "pid"
-        Me.pid.HeaderText = "ID"
-        Me.pid.Name = "pid"
-        Me.pid.Visible = False
-        '
-        'age_years
-        '
-        Me.age_years.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.age_years.DataPropertyName = "age_years"
-        Me.age_years.HeaderText = "AGE (YEAR/S)"
-        Me.age_years.Name = "age_years"
-        Me.age_years.Width = 99
-        '
-        'age_months
-        '
-        Me.age_months.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.age_months.DataPropertyName = "age_months"
-        Me.age_months.HeaderText = "AGE (MONTH/S)"
-        Me.age_months.Name = "age_months"
-        Me.age_months.Width = 115
-        '
-        'column_height
-        '
-        Me.column_height.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.column_height.DataPropertyName = "column_height"
-        Me.column_height.HeaderText = "HEIGHT RANGE"
-        Me.column_height.Name = "column_height"
-        Me.column_height.Width = 109
-        '
-        'weight
-        '
-        Me.weight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.weight.DataPropertyName = "weight"
-        Me.weight.HeaderText = "WEIGHT RANGE"
-        Me.weight.Name = "weight"
-        Me.weight.Width = 113
-        '
-        'vaccine_name
-        '
-        Me.vaccine_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.vaccine_name.DataPropertyName = "vaccine_name"
-        Me.vaccine_name.HeaderText = "VACCINE NAME"
-        Me.vaccine_name.Name = "vaccine_name"
-        '
-        'dosage_per_vaccine
-        '
-        Me.dosage_per_vaccine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.dosage_per_vaccine.DataPropertyName = "dosage_per_vaccine"
-        Me.dosage_per_vaccine.HeaderText = "DOSAGE PER VACCINE"
-        Me.dosage_per_vaccine.Name = "dosage_per_vaccine"
-        Me.dosage_per_vaccine.Width = 145
-        '
-        'doses
-        '
-        Me.doses.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.doses.DataPropertyName = "doses"
-        Me.doses.HeaderText = "DOSES"
-        Me.doses.Name = "doses"
-        Me.doses.Width = 65
-        '
-        'btnEdit
-        '
-        Me.btnEdit.HeaderText = ""
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.btnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'btnDelete
-        '
-        Me.btnDelete.HeaderText = ""
-        Me.btnDelete.Name = "btnDelete"
         '
         'frmVaccine
         '

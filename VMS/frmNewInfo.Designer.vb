@@ -45,6 +45,7 @@ Partial Class frmNewInfo
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.cmbSex = New System.Windows.Forms.ComboBox()
+        Me.txtPID = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -291,6 +292,14 @@ Partial Class frmNewInfo
         Me.cmbSex.Size = New System.Drawing.Size(393, 23)
         Me.cmbSex.TabIndex = 22
         '
+        'txtPID
+        '
+        Me.txtPID.Location = New System.Drawing.Point(12, 43)
+        Me.txtPID.Name = "txtPID"
+        Me.txtPID.Size = New System.Drawing.Size(394, 23)
+        Me.txtPID.TabIndex = 23
+        Me.txtPID.Visible = False
+        '
         'frmNewInfo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -298,6 +307,7 @@ Partial Class frmNewInfo
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(418, 544)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtPID)
         Me.Controls.Add(Me.cmbSex)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnClose)
@@ -355,4 +365,5 @@ Partial Class frmNewInfo
     Friend WithEvents btnUpdate As Button
     Friend WithEvents cmbSex As ComboBox
     Friend WithEvents Label10 As Label
+    Friend WithEvents txtPID As TextBox
 End Class
