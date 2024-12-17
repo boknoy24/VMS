@@ -1,6 +1,8 @@
-﻿Imports System.Data.SQLite
+﻿Imports MySql.Data.MySqlClient
+
 Public Class frmNewVac
-    Private connectionString As String = "Data Source=vms.db;Version=3;"
+    Private connectionString As String = "Server=localhost;Database=vms;Uid=root;Pwd=;"
+
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Dispose()
     End Sub
@@ -55,14 +57,15 @@ Public Class frmNewVac
             txtDoses.Focus()
             Return
         End If
+
         Try
-            Using connection As New SQLiteConnection(connectionString)
+            Using connection As New MySqlConnection(connectionString)
                 connection.Open()
 
                 Dim query As String = "INSERT INTO vaccine_info (vaccine_name, recommended_age_year, recommended_age_month, height_range, weight_range, dosage_per_vaccine, doses) " &
                                       "VALUES (@vaccine_name, @age_year, @age_month, @height_range, @weight_range, @dosage, @doses)"
 
-                Using command As New SQLiteCommand(query, connection)
+                Using command As New MySqlCommand(query, connection)
                     command.Parameters.AddWithValue("@vaccine_name", vaccineName)
                     command.Parameters.AddWithValue("@age_year", If(String.IsNullOrEmpty(ageYear), DBNull.Value, CInt(ageYear)))
                     command.Parameters.AddWithValue("@age_month", If(String.IsNullOrEmpty(ageMonth), DBNull.Value, CInt(ageMonth)))

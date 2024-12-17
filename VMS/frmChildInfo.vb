@@ -1,12 +1,12 @@
-﻿Imports System.Data.SQLite
+﻿Imports MySql.Data.MySqlClient
 
 Public Class frmChildInfo
-
-    Private connectionString As String = "Data Source=vms.db;Version=3;"
+    Private connectionString As String = "Server=localhost;Database=vms;Uid=root;Pwd=;"
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Dispose()
     End Sub
+
     Private Sub btnAddnew_Click(sender As Object, e As EventArgs) Handles btnAddnew.Click
         With frmNewInfo
             .btnUpdate.Enabled = False
@@ -14,12 +14,11 @@ Public Class frmChildInfo
         End With
     End Sub
 
-
     Private Sub LoadPeopleData()
-        Using connection As New SQLiteConnection(connectionString)
+        Using connection As New MySqlConnection(connectionString)
             Dim query As String = "SELECT pid, lastname, firstname, middleinitial, suffix, gender, dateofbirth, mothername, fathername, address FROM information"
             connection.Open()
-            Using adapter As New SQLiteDataAdapter(query, connection)
+            Using adapter As New MySqlDataAdapter(query, connection)
                 Dim dt As New DataTable()
                 adapter.Fill(dt)
                 DataGridView1.DataSource = dt
@@ -30,6 +29,7 @@ Public Class frmChildInfo
     Private Sub frmChildInfo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadPeopleData()
     End Sub
+
     Public Sub RefreshDataGrid()
         LoadPeopleData()
     End Sub

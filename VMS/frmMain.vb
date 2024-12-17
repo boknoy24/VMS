@@ -37,4 +37,7 @@
         Me.Top = 0
     End Sub
 
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+
+    End Sub
 End Class

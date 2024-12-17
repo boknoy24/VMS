@@ -1,6 +1,8 @@
-﻿Imports System.Data.SQLite
+﻿Imports MySql.Data.MySqlClient
+
 Public Class frmVaccine
-    Private connectionString As String = "Data Source=vms.db;Version=3;"
+    Private connectionString As String = "Server=localhost;Database=vms;Uid=root;Pwd=;"
+
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Dispose()
     End Sub
@@ -14,11 +16,11 @@ Public Class frmVaccine
 
     Private Sub LoadVaccineInfoData()
         Try
-            Using connection As New SQLiteConnection(connectionString)
+            Using connection As New MySqlConnection(connectionString)
                 connection.Open()
                 Dim query As String = "SELECT pid, age_years, age_months, height AS column_height, weight, vaccine_name, dosage_per_vaccine, doses FROM vaccine_info"
 
-                Using adapter As New SQLiteDataAdapter(query, connection)
+                Using adapter As New MySqlDataAdapter(query, connection)
                     Dim dt As New DataTable()
                     adapter.Fill(dt)
 

@@ -1,6 +1,8 @@
-﻿Imports System.Data.SQLite
+﻿Imports MySql.Data.MySqlClient
+
 Public Class frmNewInfo
-    Private connectionString As String = "Data Source=vms.db;Version=3;"
+    Private connectionString As String = "Server=localhost;Database=vms;Uid=root;Pwd=;"
+
     Private Sub cmbSex_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbSex.KeyPress
         e.Handled = True
     End Sub
@@ -19,6 +21,7 @@ Public Class frmNewInfo
         Dim mothername As String = txtMother.Text.Trim()
         Dim fathername As String = txtFather.Text.Trim()
         Dim address As String = txtAddress.Text.Trim()
+
         If String.IsNullOrEmpty(lastname) Then
             MessageBox.Show("Please enter the Last Name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             txtLname.Focus()
@@ -62,13 +65,13 @@ Public Class frmNewInfo
         End If
 
         Try
-            Using connection As New SQLiteConnection(connectionString)
+            Using connection As New MySqlConnection(connectionString)
                 connection.Open()
 
                 Dim query As String = "INSERT INTO information (lastname, firstname, middleinitial, suffix, gender, dateofbirth, mothername, fathername, address) " &
                                       "VALUES (@lastname, @firstname, @middleinitial, @suffix, @gender, @dateofbirth, @mothername, @fathername, @address)"
 
-                Using command As New SQLiteCommand(query, connection)
+                Using command As New MySqlCommand(query, connection)
                     command.Parameters.AddWithValue("@lastname", lastname)
                     command.Parameters.AddWithValue("@firstname", firstname)
                     command.Parameters.AddWithValue("@middleinitial", middleinitial)
@@ -85,7 +88,6 @@ Public Class frmNewInfo
                 MessageBox.Show("Information saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 frmChildInfo.RefreshDataGrid()
                 Me.Close()
-
             End Using
         Catch ex As Exception
             MessageBox.Show("An error occurred while saving the data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
