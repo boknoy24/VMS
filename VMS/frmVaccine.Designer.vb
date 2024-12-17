@@ -37,6 +37,8 @@ Partial Class frmVaccine
         Me.vaccine_name = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dosage_per_vaccine = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.doses = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnEdit = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.btnDelete = New System.Windows.Forms.DataGridViewImageColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -63,7 +65,7 @@ Partial Class frmVaccine
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeight = 30
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pid, Me.age_years, Me.age_months, Me.column_height, Me.weight, Me.vaccine_name, Me.dosage_per_vaccine, Me.doses})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pid, Me.age_years, Me.age_months, Me.column_height, Me.weight, Me.vaccine_name, Me.dosage_per_vaccine, Me.doses, Me.btnEdit, Me.btnDelete})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -77,6 +79,7 @@ Partial Class frmVaccine
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(913, 465)
         Me.DataGridView1.TabIndex = 1
         '
@@ -206,6 +209,18 @@ Partial Class frmVaccine
         Me.doses.Name = "doses"
         Me.doses.Width = 65
         '
+        'btnEdit
+        '
+        Me.btnEdit.HeaderText = ""
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.btnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'btnDelete
+        '
+        Me.btnDelete.HeaderText = ""
+        Me.btnDelete.Name = "btnDelete"
+        '
         'frmVaccine
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -239,4 +254,6 @@ Partial Class frmVaccine
     Friend WithEvents vaccine_name As DataGridViewTextBoxColumn
     Friend WithEvents dosage_per_vaccine As DataGridViewTextBoxColumn
     Friend WithEvents doses As DataGridViewTextBoxColumn
+    Friend WithEvents btnEdit As DataGridViewImageColumn
+    Friend WithEvents btnDelete As DataGridViewImageColumn
 End Class

@@ -41,6 +41,7 @@ Partial Class frmNewVac
         Me.txtDosage = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtDoses = New System.Windows.Forms.TextBox()
+        Me.txtPID = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -249,6 +250,14 @@ Partial Class frmNewVac
         Me.txtDoses.Size = New System.Drawing.Size(394, 23)
         Me.txtDoses.TabIndex = 54
         '
+        'txtPID
+        '
+        Me.txtPID.Location = New System.Drawing.Point(12, 49)
+        Me.txtPID.Name = "txtPID"
+        Me.txtPID.Size = New System.Drawing.Size(394, 23)
+        Me.txtPID.TabIndex = 7
+        Me.txtPID.Visible = False
+        '
         'frmNewVac
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -256,6 +265,7 @@ Partial Class frmNewVac
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(418, 424)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtPID)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtDoses)
         Me.Controls.Add(Me.Label6)
@@ -290,7 +300,6 @@ Partial Class frmNewVac
     Friend WithEvents btnSave As Button
     Friend WithEvents txtHeightRange As TextBox
     Friend WithEvents txtAgeYear As TextBox
-    Friend WithEvents txtVaccineName As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents txtAgeMonth As TextBox
     Friend WithEvents Panel1 As Panel
@@ -304,4 +313,6 @@ Partial Class frmNewVac
     Friend WithEvents txtDosage As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents txtDoses As TextBox
+    Friend WithEvents txtVaccineName As TextBox
+    Friend WithEvents txtPID As TextBox
 End Class

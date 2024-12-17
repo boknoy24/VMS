@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmChildInfo
+Partial Class frmSearch
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -208,9 +208,9 @@ Partial Class frmChildInfo
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(11, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(198, 26)
+        Me.Label1.Size = New System.Drawing.Size(215, 26)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "CHILD INFORMATION"
+        Me.Label1.Text = "SEARCH INFORMATION"
         '
         'Panel1
         '
@@ -224,7 +224,7 @@ Partial Class frmChildInfo
         Me.Panel1.Size = New System.Drawing.Size(934, 46)
         Me.Panel1.TabIndex = 6
         '
-        'frmChildInfo
+        'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -235,8 +235,7 @@ Partial Class frmChildInfo
         Me.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Name = "frmChildInfo"
-        Me.Text = " "
+        Me.Name = "frmSearch"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
