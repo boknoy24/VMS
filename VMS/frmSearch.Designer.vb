@@ -24,7 +24,7 @@ Partial Class frmSearch
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DGVSearch = New System.Windows.Forms.DataGridView()
         Me.pid = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lastname = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.firstname = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -35,26 +35,27 @@ Partial Class frmSearch
         Me.mothername = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fathername = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.address = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnEdit = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.btnDelete = New System.Windows.Forms.DataGridViewImageColumn()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.btnAddnew = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGVSearch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'DGVSearch
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToResizeColumns = False
-        Me.DataGridView1.AllowUserToResizeRows = False
-        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.DGVSearch.AllowUserToAddRows = False
+        Me.DGVSearch.AllowUserToResizeColumns = False
+        Me.DGVSearch.AllowUserToResizeRows = False
+        Me.DGVSearch.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DGVSearch.BackgroundColor = System.Drawing.Color.White
+        Me.DGVSearch.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.DGVSearch.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.DGVSearch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -62,10 +63,10 @@ Partial Class frmSearch
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridView1.ColumnHeadersHeight = 30
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pid, Me.lastname, Me.firstname, Me.middleinitial, Me.suffix, Me.gender, Me.dateofbirth, Me.mothername, Me.fathername, Me.address})
+        Me.DGVSearch.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DGVSearch.ColumnHeadersHeight = 30
+        Me.DGVSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DGVSearch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.pid, Me.lastname, Me.firstname, Me.middleinitial, Me.suffix, Me.gender, Me.dateofbirth, Me.mothername, Me.fathername, Me.address, Me.btnEdit, Me.btnDelete})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -73,14 +74,15 @@ Partial Class frmSearch
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridView1.EnableHeadersVisualStyles = False
-        Me.DataGridView1.Location = New System.Drawing.Point(9, 45)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(913, 465)
-        Me.DataGridView1.TabIndex = 0
+        Me.DGVSearch.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DGVSearch.EnableHeadersVisualStyles = False
+        Me.DGVSearch.Location = New System.Drawing.Point(9, 45)
+        Me.DGVSearch.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.DGVSearch.Name = "DGVSearch"
+        Me.DGVSearch.RowHeadersVisible = False
+        Me.DGVSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DGVSearch.Size = New System.Drawing.Size(913, 465)
+        Me.DGVSearch.TabIndex = 0
         '
         'pid
         '
@@ -160,6 +162,18 @@ Partial Class frmSearch
         Me.address.HeaderText = "ADDRESS"
         Me.address.Name = "address"
         '
+        'btnEdit
+        '
+        Me.btnEdit.HeaderText = ""
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.btnEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'btnDelete
+        '
+        Me.btnDelete.HeaderText = ""
+        Me.btnDelete.Name = "btnDelete"
+        '
         'btnClose
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -180,26 +194,6 @@ Partial Class frmSearch
         Me.btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnClose.UseVisualStyleBackColor = False
         '
-        'btnAddnew
-        '
-        Me.btnAddnew.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddnew.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(148, Byte), Integer))
-        Me.btnAddnew.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAddnew.FlatAppearance.BorderSize = 0
-        Me.btnAddnew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.btnAddnew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAddnew.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddnew.ForeColor = System.Drawing.Color.White
-        Me.btnAddnew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAddnew.Location = New System.Drawing.Point(762, 12)
-        Me.btnAddnew.Name = "btnAddnew"
-        Me.btnAddnew.Size = New System.Drawing.Size(83, 28)
-        Me.btnAddnew.TabIndex = 4
-        Me.btnAddnew.Text = "ADD NEW"
-        Me.btnAddnew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAddnew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnAddnew.UseVisualStyleBackColor = False
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -217,7 +211,6 @@ Partial Class frmSearch
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(52, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.Panel1.Controls.Add(Me.btnClose)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.btnAddnew)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -231,22 +224,21 @@ Partial Class frmSearch
         Me.ClientSize = New System.Drawing.Size(934, 519)
         Me.ControlBox = False
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.DGVSearch)
         Me.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "frmSearch"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGVSearch, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DGVSearch As DataGridView
     Friend WithEvents btnClose As Button
-    Friend WithEvents btnAddnew As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents pid As DataGridViewTextBoxColumn
@@ -259,4 +251,6 @@ Partial Class frmSearch
     Friend WithEvents mothername As DataGridViewTextBoxColumn
     Friend WithEvents fathername As DataGridViewTextBoxColumn
     Friend WithEvents address As DataGridViewTextBoxColumn
+    Friend WithEvents btnEdit As DataGridViewImageColumn
+    Friend WithEvents btnDelete As DataGridViewImageColumn
 End Class

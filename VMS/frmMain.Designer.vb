@@ -24,6 +24,7 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.btnVaccine = New System.Windows.Forms.Button()
@@ -31,7 +32,6 @@ Partial Class frmMain
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -39,7 +39,7 @@ Partial Class frmMain
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(48, Byte), Integer))
-        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.txtSearch)
         Me.Panel1.Controls.Add(Me.btnLogout)
         Me.Panel1.Controls.Add(Me.btnSearch)
         Me.Panel1.Controls.Add(Me.btnVaccine)
@@ -50,6 +50,13 @@ Partial Class frmMain
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(183, 651)
         Me.Panel1.TabIndex = 0
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(12, 291)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(157, 23)
+        Me.txtSearch.TabIndex = 6
         '
         'btnLogout
         '
@@ -166,13 +173,6 @@ Partial Class frmMain
         Me.Panel2.Size = New System.Drawing.Size(851, 547)
         Me.Panel2.TabIndex = 1
         '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 271)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(157, 23)
-        Me.TextBox1.TabIndex = 6
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -202,5 +202,5 @@ Partial Class frmMain
     Friend WithEvents Panel2 As Panel
     Friend WithEvents btnSearch As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtSearch As TextBox
 End Class

@@ -98,24 +98,25 @@ Public Class frmNewInfo
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         If Not ValidateInput() Then Return
+
         Try
             If MsgBox("Update record?", vbYesNo + vbQuestion) = vbYes Then
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
                     Dim query As String = "UPDATE information SET " &
-                      "lastname = @lastname, " &
-                      "firstname = @firstname, " &
-                      "middleinitial = @middleinitial, " &
-                      "suffix = @suffix, " &
-                      "gender = @gender, " &
-                      "dateofbirth = @dateofbirth, " &
-                      "mothername = @mothername, " &
-                      "fathername = @fathername, " &
-                      "address = @address " &
-                      "WHERE pid = @pid"
+                                      "lastname = @lastname, " &
+                                      "firstname = @firstname, " &
+                                      "middleinitial = @middleinitial, " &
+                                      "suffix = @suffix, " &
+                                      "gender = @gender, " &
+                                      "dateofbirth = @dateofbirth, " &
+                                      "mothername = @mothername, " &
+                                      "fathername = @fathername, " &
+                                      "address = @address " &
+                                      "WHERE pid = @pid"
 
                     Using command As New MySqlCommand(query, connection)
-                        command.Parameters.AddWithValue("@pid", If(String.IsNullOrEmpty(txtPID.Text), DBNull.Value, CInt(txtPID.Text)))
+                        command.Parameters.AddWithValue("@pid", txtPID.Text)
                         command.Parameters.AddWithValue("@lastname", txtLname.Text.Trim())
                         command.Parameters.AddWithValue("@firstname", txtFname.Text.Trim())
                         command.Parameters.AddWithValue("@middleinitial", txtMI.Text.Trim())
@@ -127,18 +128,19 @@ Public Class frmNewInfo
                         command.Parameters.AddWithValue("@address", txtAddress.Text.Trim())
                         command.ExecuteNonQuery()
                     End Using
-
-                    MessageBox.Show("Vaccine information updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    frmNewVac.Clear()
-                    frmChildInfo.RefreshDataGrid()
-                    Me.Close()
-
                 End Using
+
+                MessageBox.Show("Child Information updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                frmSearch.RefreshDataGrid(CInt(txtPID.Text))
+                frmNewVac.Clear()
+                frmChildInfo.RefreshDataGrid()
+                Me.Close()
             End If
         Catch ex As Exception
             MessageBox.Show("An error occurred while updating the data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
     Private Function ValidateInput() As Boolean
         If String.IsNullOrWhiteSpace(txtPID.Text) OrElse Not IsNumeric(txtPID.Text) Then
